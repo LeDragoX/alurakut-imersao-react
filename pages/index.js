@@ -23,6 +23,11 @@ export default function Home() {
     'marcobrunodev',
     'felipefialho',
   ];
+  const qualidades = [
+    3,
+    2,
+    1,
+  ]
 
   return (
     <div>
@@ -38,7 +43,7 @@ export default function Home() {
             <h1 className="title">
               Bem vindo(a)
             </h1>
-            <OrkutNostalgicIconSet />
+            <OrkutNostalgicIconSet confiavel={qualidades[0]} legal={qualidades[1]} sexy={qualidades[2]} />
           </Box>
         </div>
         <div className="profileRelationsArea" style={{ gridArea: "profileRelationsArea" }}>
