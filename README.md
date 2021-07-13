@@ -1,5 +1,5 @@
 # Orkut da Alura
-# Resume
+## Resume
 3ª Imersão React - Projeto da Alura que volta no passado, nos ensinando a recriar o Orkut, mas com o nome de Alurakut.
 
 - Link: https://alurakut-inky-two.vercel.app/ (Se o projeto continuou no ar)
