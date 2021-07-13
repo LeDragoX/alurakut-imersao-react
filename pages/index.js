@@ -15,7 +15,7 @@ function ProfileSideBar(params) {
 
 export default function Home() {
   const githubUser = "ledragox"
-  const pessoasFav = [
+  const favPersons = [
     'ChrisTitusTech',
     'Thog',
     'gdkchan',
@@ -29,7 +29,7 @@ export default function Home() {
     //'marcobrunodev',
     //'felipefialho',
   ];
-  const qualidades = [
+  const qualities = [
     3,
     2,
     1,
@@ -49,21 +49,21 @@ export default function Home() {
             <h1 className="title">
               Bem vindo(a)
             </h1>
-            <OrkutNostalgicIconSet confiavel={qualidades[0]} legal={qualidades[1]} sexy={qualidades[2]} />
+            <OrkutNostalgicIconSet confiavel={qualities[0]} legal={qualities[1]} sexy={qualities[2]} />
           </Box>
         </div>
         <div className="profileRelationsArea" style={{ gridArea: "profileRelationsArea" }}>
           <ProfileRelationsBoxWrapper>
             <h2 className="smallTitle">
-              Pessoas da Comunidade ({pessoasFav.length})
+              Pessoas da Comunidade ({favPersons.length})
             </h2>
             <ul>
-              {pessoasFav.map((pessoaAtual) => {
+              {favPersons.map((currentPerson) => {
                 return (
                   <li>
-                    <a href={`/users/${pessoaAtual}`} key={pessoaAtual}>
-                      <img src={`https://github.com/${pessoaAtual}.png`} />
-                      <span>{pessoaAtual}</span>
+                    <a href={`/users/${currentPerson}`} key={currentPerson}>
+                      <img src={`https://github.com/${currentPerson}.png`} />
+                      <span>{currentPerson}</span>
                     </a>
                   </li>
                 )
