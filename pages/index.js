@@ -16,12 +16,18 @@ function ProfileSideBar(params) {
 export default function Home() {
   const githubUser = "ledragox"
   const pessoasFav = [
-    'juunegreiros',
-    'omariosouto',
-    'peas',
-    'rafaballerini',
-    'marcobrunodev',
-    'felipefialho',
+    'ChrisTitusTech',
+    'Thog',
+    'gdkchan',
+    'Diolinux',
+    'danileao',
+    'maykbrito',
+    //'juunegreiros',
+    //'omariosouto',
+    //'peas',
+    //'rafaballerini',
+    //'marcobrunodev',
+    //'felipefialho',
   ];
   const qualidades = [
     3,
