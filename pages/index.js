@@ -47,7 +47,7 @@ export default function Home() {
         <div className="welcomeArea" style={{ gridArea: "welcomeArea" }}>
           <Box>
             <h1 className="title">
-              Bem vindo(a) {githubUser[0].toUpperCase() + githubUser.substr(1)}
+              Bem vindo(a) @{githubUser[0].toUpperCase() + githubUser.substr(1)}
             </h1>
             <OrkutNostalgicIconSet confiavel={qualities[0]} legal={qualities[1]} sexy={qualities[2]} />
           </Box>
