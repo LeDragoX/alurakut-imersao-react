@@ -13,6 +13,9 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-image: url("https://i2.wp.com/www.pswallpapers.com/wp-content/uploads/2017/03/The-Legend-of-Zelda-Breath-of-the-Wild-4K-Main.jpg?ssl=1");
+    background-position: center;
+    background-size: cover;
     background-color: #D9E6F6;
     font-family: sans-serif, Verdana, Geneva, Tahoma ;
   }
