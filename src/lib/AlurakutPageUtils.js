@@ -2,8 +2,11 @@ import { Box } from "../components/Box";
 import { AlurakutProfileSidebarMenuDefault } from "./AlurakutCommons";
 import { ProfileRelationsBoxWrapper } from "../components/ProfileRelations";
 
+// ================================================================================================================
+// ProfileSideBar
+// ================================================================================================================
 function ProfileSideBar(props) {
-  console.log(props)
+  console.log("Profile Side Bar: ", props)
   return (
     <Box>
       <img src={`https://github.com/${props.githubUser}.png`} style={{ borderRadius: "8px" }}></img>
@@ -21,6 +24,9 @@ function ProfileSideBar(props) {
   )
 }
 
+// ================================================================================================================
+// ProfileRelationsBox
+// ================================================================================================================
 function ProfileRelationsBox(props) {
   return (
     <ProfileRelationsBoxWrapper>

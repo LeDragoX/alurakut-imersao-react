@@ -245,7 +245,7 @@ AlurakutProfileSidebarMenuDefault.Wrapper = styled.div`
 // OrkutNostalgicIconSet
 // ================================================================================================================
 export function OrkutNostalgicIconSet(props) {
-  console.log(props)
+  console.log("Orkut Nostalgic Icon Set: ", props)
   return (
     <OrkutNostalgicIconSet.List>
       {[
