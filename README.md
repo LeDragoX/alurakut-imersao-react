@@ -2,22 +2,23 @@
 ## Resume
 3ª Imersão React - Projeto da Alura que volta no passado, nos ensinando a recriar o Orkut, mas com o nome de Alurakut.
 
-- Link: https://alurakut-inky-two.vercel.app/ (Se o projeto continuou no ar)
+- Link (Deploy na Vercel): https://alurakut-inky-two.vercel.app/ (Se o projeto continuou no ar)
 
-## How to use
+## Usage
 
 Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
 
 ```bash
+# npx vs npm: Npx remove it's dependencies after creating
 npx create-next-app --example with-styled-components with-styled-components-app
-# or
-yarn create next-app --example with-styled-components with-styled-components-app
-```
 
-```bash
+# Dependencies
 yarn add -D babel-plugin-styled-components
 
+# Initialize project
+yarn dev
 ```
+Access [localhost:3000](localhost:3000) to see the result.
 
 Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
 
