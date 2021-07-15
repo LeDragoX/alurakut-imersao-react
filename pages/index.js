@@ -114,7 +114,7 @@ export default function Home() {
           <ProfileRelationsBox title="Seguidores" items={gitFollowers} />
           <ProfileRelationsBoxWrapper>
             <h2 className="smallTitle">
-              Comunidade ({communities.length})
+              Comunidades ({communities.length})
             </h2>
             <ul>
               {communities.map((currentItem) => {
