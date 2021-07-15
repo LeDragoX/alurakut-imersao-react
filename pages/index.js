@@ -4,25 +4,7 @@ import { Box } from "../src/components/Box";
 import { MainGrid } from "../src/components/MainGrid";
 import { ProfileRelationsBoxWrapper } from "../src/components/ProfileRelations";
 import { AlurakutMenu, AlurakutProfileSidebarMenuDefault, OrkutNostalgicIconSet } from "../src/lib/AlurakutCommons";
-
-function ProfileSideBar(params) {
-  console.log(params)
-  return (
-    <Box>
-      <img src={`https://github.com/${params.githubUser}.png`} style={{ borderRadius: "8px" }}></img>
-      <hr />
-
-      <p>
-        <a className="boxLink" href={`https://github.com/${params.githubUser}`}>
-          @{params.githubUser}
-        </a>
-      </p>
-      <hr />
-
-      <AlurakutProfileSidebarMenuDefault />
-    </Box>
-  )
-}
+import { ProfileSideBar, ProfileRelationsBox } from "../src/lib/AlurakutPageUtils";
 
 export default function Home() {
   const randomUser = "ledragox";
@@ -50,6 +32,19 @@ export default function Home() {
     2,
     1,
   ]
+  const [gitFollowers, setGitFollowers] = React.useState([])
+  // Array de seguidores no GitHub para um Box
+  React.useEffect(function () {
+    fetch(`https://api.github.com/users/${randomUser}/followers`)
+      .then(function getResponse(response) {
+        if (response.ok) {
+          return response.json()
+        }
+      })
+      .then(function printResponse(response) {
+        setGitFollowers(response)
+      })
+  }, [])
 
   return (
     <div>
@@ -112,7 +107,9 @@ export default function Home() {
             </form>
           </Box>
         </div>
+
         <div className="profileRelationsArea" style={{ gridArea: "profileRelationsArea" }}>
+          <ProfileRelationsBox title="Seguidores" items={gitFollowers} />
           <ProfileRelationsBoxWrapper>
             <h2 className="smallTitle">
               Comunidade ({communities.length})
@@ -130,6 +127,7 @@ export default function Home() {
               })}
             </ul>
           </ProfileRelationsBoxWrapper>
+
           <ProfileRelationsBoxWrapper>
             <h2 className="smallTitle">
               Pessoas da Comunidade ({favPersons.length})
@@ -147,6 +145,7 @@ export default function Home() {
               })}
             </ul>
           </ProfileRelationsBoxWrapper>
+
           <Box>
             Comunidades
           </Box>
