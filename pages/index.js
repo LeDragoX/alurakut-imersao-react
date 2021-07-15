@@ -110,7 +110,7 @@ export default function Home() {
           <ProfileRelationsBox title="Seguidores" items={gitFollowers} />
           <ProfileRelationsBoxWrapper>
             <h2 className="smallTitle">
-              Comunidades ({communities.length})
+              Minhas comunidades <a className="boxLink" href="#">({communities.length})</a>
             </h2>
             <ul>
               {communities.map((currentItem) => {
@@ -124,11 +124,13 @@ export default function Home() {
                 )
               })}
             </ul>
+            <hr />
+            <a className="boxLink" href="#">Ver Todos</a>
           </ProfileRelationsBoxWrapper>
 
           <ProfileRelationsBoxWrapper>
             <h2 className="smallTitle">
-              Pessoas da Comunidade ({favPersons.length})
+              Meus amigos <a className="boxLink" href="#">({favPersons.length})</a>
             </h2>
             <ul>
               {favPersons.map((currentItem) => {
@@ -142,6 +144,8 @@ export default function Home() {
                 )
               })}
             </ul>
+            <hr />
+            <a className="boxLink" href="#">Ver Todos</a>
           </ProfileRelationsBoxWrapper>
 
         </div>

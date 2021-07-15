@@ -31,7 +31,7 @@ function ProfileRelationsBox(props) {
   return (
     <ProfileRelationsBoxWrapper>
       <h2 className="smallTitle">
-        {props.title} ({props.items.length})
+        {props.title} <a className="boxLink" href="#">({props.items.length})</a>
       </h2>
       <ul>
         {/* {props.items.map((currentItem) => {
@@ -45,6 +45,8 @@ function ProfileRelationsBox(props) {
           )
         })} */}
       </ul>
+      <hr />
+      <a className="boxLink" href="#">Ver Todos</a>
     </ProfileRelationsBoxWrapper>
   )
 }
