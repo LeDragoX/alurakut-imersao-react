@@ -18,7 +18,9 @@ yarn add -D babel-plugin-styled-components
 # Initialize project
 yarn dev
 ```
-Access [localhost:3000](localhost:3000) to see the result.
+Access [localhost:3000/](localhost:3000/) to see the result.
+
+## Auto-generated part
 
 Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
 
