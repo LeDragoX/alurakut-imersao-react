@@ -6,7 +6,7 @@ import { ProfileRelationsBoxWrapper } from "../components/ProfileRelations";
 // ProfileSideBar
 // ================================================================================================================
 function ProfileSideBar(props) {
-  console.log("Profile Side Bar:\n", props)
+  //console.log("Profile Side Bar:\n", props)
   return (
     <Box>
       <img src={`https://github.com/${props.githubUser}.png`} style={{ borderRadius: "8px" }}></img>

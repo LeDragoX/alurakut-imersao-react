@@ -7,11 +7,13 @@ import { ProfileSideBar, ProfileRelationsBox } from "../src/lib/AlurakutPageUtil
 
 export default function Home() {
   const randomUser = "ledragox";
-  const [communities, setCommunities] = React.useState([{
-    id: '47852436578436782346784754678',
-    title: 'Eu odeio acordar cedo',
-    image: 'https://alurakut.vercel.app/capa-comunidade-01.jpg',
-  }]);
+  const [communities, setCommunities] = React.useState([
+    // {
+    //   id: '47852436578436782346784754678',
+    //   title: 'Eu odeio acordar cedo',
+    //   imageUrl: 'https://alurakut.vercel.app/capa-comunidade-01.jpg',
+    // }
+  ]);
   const favPersons = [
     'ChrisTitusTech',
     'Thog',
@@ -30,6 +32,7 @@ export default function Home() {
   const [gitFollowers, setGitFollowers] = React.useState([])
   // Array de seguidores no GitHub para um Box https://api.github.com/users/ledragox/followers
   React.useEffect(function () {
+    // GitHub API (GET)
     fetch(`https://api.github.com/users/${randomUser}/followers`)
       .then(function getResponse(response) {
         if (response.ok) {
@@ -39,6 +42,35 @@ export default function Home() {
       .then(function printResponse(response) {
         setGitFollowers(response)
       })
+
+    // GraphQL API (POST)
+    const TOKEN_READ = "65fa4978cccae44ce7fce735e63979"
+    fetch('https://graphql.datocms.com/', {
+      method: 'POST',
+      headers: {
+        'Authorization': `${TOKEN_READ}`,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        "query": `query {
+          allCommunities {
+            id
+            title
+            imageUrl
+            creatorSlug
+          }
+        }`
+      })
+    })
+      .then((response) => response.json()) // Pega o retorno do response.json() e já retorna
+      .then((responseComplete) => {
+        const communitiesDato = responseComplete.data.allCommunities
+        setCommunities(communitiesDato)
+
+        console.log("Communities:\n", communitiesDato)
+      })
+
   }, [])
 
   return (
@@ -73,13 +105,28 @@ export default function Home() {
               console.log('Image: ', formData.get('image'))
 
               const community = {
-                id: new Date().toISOString(),
+                // id: new Date().toISOString(),
                 title: formData.get('title'),
-                image: formData.get('image'),
+                imageUrl: formData.get('image'),
+                creatorSlug: randomUser,
               }
 
-              const updatedCommunities = [...communities, community]
-              setCommunities(updatedCommunities)
+              fetch('api/communities', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(community),
+              })
+                .then(async (response) => {
+                  const responseData = await response.json()
+                  console.log("Create community response:\n", responseData.recordData)
+                  const community = responseData.recordData
+
+                  const updatedCommunities = [...communities, community]
+                  setCommunities(updatedCommunities)
+                })
+
             }}>
               <div>
                 <input
@@ -116,8 +163,8 @@ export default function Home() {
               {communities.map((currentItem) => {
                 return (
                   <li key={currentItem.id}>
-                    <a href={`/communities/${currentItem.title}`}>
-                      <img src={currentItem.image} />
+                    <a href={`/communities/${currentItem.id}`}>
+                      <img src={currentItem.imageUrl} />
                       <span>{currentItem.title}</span>
                     </a>
                   </li>
@@ -130,7 +177,7 @@ export default function Home() {
 
           <ProfileRelationsBoxWrapper>
             <h2 className="smallTitle">
-              Meus amigos <a className="boxLink" href="#">({favPersons.length})</a>
+              Seguindo <a className="boxLink" href="#">({favPersons.length})</a>
             </h2>
             <ul>
               {favPersons.map((currentItem) => {

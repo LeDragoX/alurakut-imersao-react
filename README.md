@@ -4,6 +4,15 @@
 
 - Link (Deploy na Vercel): https://alurakut-inky-two.vercel.app/ (Se o projeto continuou no ar)
 
+## Tecnologias utilizadas
+- NodeJS;
+- Yarn;
+- React;
+- NextJS;
+- Styled-Components;
+- DatoCMS (Site com Gerenciador de Conteúdo);
+- Ajax (Tá mais pra Ajaj);
+- Vercel (Deploy);
 ## Usage
 
 Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
@@ -14,6 +23,7 @@ npx create-next-app --example with-styled-components with-styled-components-app
 
 # Dependencies
 yarn add -D babel-plugin-styled-components
+yarn add datocms-client
 
 # Initialize project
 yarn dev
