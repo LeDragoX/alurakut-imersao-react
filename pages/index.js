@@ -32,7 +32,7 @@ export default function Home() {
     1,
   ]
   const [gitFollowers, setGitFollowers] = React.useState([])
-  // Array de seguidores no GitHub para um Box
+  // Array de seguidores no GitHub para um Box https://api.github.com/users/ledragox/followers
   React.useEffect(function () {
     fetch(`https://api.github.com/users/${randomUser}/followers`)
       .then(function getResponse(response) {
