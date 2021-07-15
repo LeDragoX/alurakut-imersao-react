@@ -26,11 +26,7 @@ export default function Home() {
     //'marcobrunodev',
     //'felipefialho',
   ];
-  const qualities = [
-    3,
-    2,
-    1,
-  ]
+  const qualities = [3, 2, 1,]
   const [gitFollowers, setGitFollowers] = React.useState([])
   // Array de seguidores no GitHub para um Box https://api.github.com/users/ledragox/followers
   React.useEffect(function () {
