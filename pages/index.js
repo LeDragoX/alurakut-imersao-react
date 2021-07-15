@@ -55,6 +55,7 @@ export default function Home() {
         </div>
 
         <div className="welcomeArea" style={{ gridArea: "welcomeArea" }}>
+
           <Box>
             <h1 className="title">
               Bem vindo(a), {randomUser[0].toUpperCase() + randomUser.substr(1)}
@@ -105,9 +106,11 @@ export default function Home() {
               </button>
             </form>
           </Box>
+
         </div>
 
         <div className="profileRelationsArea" style={{ gridArea: "profileRelationsArea" }}>
+
           <ProfileRelationsBox title="Seguidores" items={gitFollowers} />
           <ProfileRelationsBoxWrapper>
             <h2 className="smallTitle">
@@ -145,9 +148,6 @@ export default function Home() {
             </ul>
           </ProfileRelationsBoxWrapper>
 
-          <Box>
-            Comunidades
-          </Box>
         </div>
       </MainGrid>
     </div>
