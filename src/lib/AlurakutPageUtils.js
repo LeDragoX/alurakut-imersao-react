@@ -28,10 +28,11 @@ function ProfileSideBar(props) {
 // ProfileRelationsBox
 // ================================================================================================================
 function ProfileRelationsBox(props) {
+  // console.log("Profile Relations Box:\n", props)
   return (
     <ProfileRelationsBoxWrapper>
       <h2 className="smallTitle">
-        {props.title} <a className="boxLink" href="#">({props.items.length})</a>
+        {props.title} <a className="boxLink" href={`https://github.com/${props.githubUser}?tab=followers`} target="_blank">({props.items.length})</a>
       </h2>
       <ul>
         {props.items.slice(0, 6).map((currentItem) => {
@@ -46,7 +47,7 @@ function ProfileRelationsBox(props) {
         })}
       </ul>
       <hr />
-      <a className="boxLink" href="#">Ver Todos</a>
+      <a className="boxLink" href={`https://github.com/${props.githubUser}?tab=followers`} target="_blank">Ver Todos</a>
     </ProfileRelationsBoxWrapper>
   )
 }

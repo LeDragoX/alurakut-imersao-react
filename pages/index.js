@@ -6,7 +6,7 @@ import { AlurakutMenu, OrkutNostalgicIconSet } from "../src/lib/AlurakutCommons"
 import { ProfileSideBar, ProfileRelationsBox } from "../src/lib/AlurakutPageUtils";
 
 export default function Home() {
-  const randomUser = "ledragox";
+  const githubRandomUser = "ledragox";
   const [communities, setCommunities] = React.useState([
     // {
     //   id: '47852436578436782346784754678',
@@ -33,7 +33,7 @@ export default function Home() {
   // Array de seguidores no GitHub para um Box https://api.github.com/users/ledragox/followers
   React.useEffect(function () {
     // GitHub API (GET)
-    fetch(`https://api.github.com/users/${randomUser}/followers`)
+    fetch(`https://api.github.com/users/${githubRandomUser}/followers`)
       .then(function getResponse(response) {
         if (response.ok) {
           return response.json()
@@ -75,18 +75,18 @@ export default function Home() {
 
   return (
     <div>
-      <AlurakutMenu githubUser={randomUser} />
+      <AlurakutMenu githubUser={githubRandomUser} />
       <MainGrid>
         {/* <Box style= "grid-area: profileArea;"> */}
         <div className="profileArea" style={{ gridArea: 'profileArea' }}>
-          <ProfileSideBar githubUser={randomUser} />
+          <ProfileSideBar githubUser={githubRandomUser} />
         </div>
 
         <div className="welcomeArea" style={{ gridArea: "welcomeArea" }}>
 
           <Box>
             <h1 className="title">
-              Bem vindo(a), {randomUser[0].toUpperCase() + randomUser.substr(1)}
+              Bem vindo(a), {githubRandomUser[0].toUpperCase() + githubRandomUser.substr(1)}
             </h1>
             <OrkutNostalgicIconSet confiavel={qualities[0]} legal={qualities[1]} sexy={qualities[2]} />
           </Box>
@@ -108,7 +108,7 @@ export default function Home() {
                 // id: new Date().toISOString(),
                 title: formData.get('title'),
                 imageUrl: formData.get('image'),
-                creatorSlug: randomUser,
+                creatorSlug: githubRandomUser,
               }
 
               fetch('api/communities', {
@@ -154,7 +154,7 @@ export default function Home() {
 
         <div className="profileRelationsArea" style={{ gridArea: "profileRelationsArea" }}>
 
-          <ProfileRelationsBox title="Seguidores" items={gitFollowers} />
+          <ProfileRelationsBox title="Seguidores" githubUser={githubRandomUser} items={gitFollowers} />
           <ProfileRelationsBoxWrapper>
             <h2 className="smallTitle">
               Minhas comunidades <a className="boxLink" href="#">({communities.length})</a>
@@ -177,7 +177,7 @@ export default function Home() {
 
           <ProfileRelationsBoxWrapper>
             <h2 className="smallTitle">
-              Seguindo <a className="boxLink" href="#">({favPersons.length})</a>
+              Seguindo <a className="boxLink" href={`https://github.com/${githubRandomUser}?tab=following`} target="_blank">({favPersons.length})</a>
             </h2>
             <ul>
               {favPersons.slice(0, 6).map((currentItem) => {
@@ -192,7 +192,7 @@ export default function Home() {
               })}
             </ul>
             <hr />
-            <a className="boxLink" href="#">Ver Todos</a>
+            <a className="boxLink" href={`https://github.com/${githubRandomUser}?tab=following`} target="_blank">Ver Todos</a>
           </ProfileRelationsBoxWrapper>
 
         </div>
