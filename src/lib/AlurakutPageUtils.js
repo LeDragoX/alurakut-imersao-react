@@ -34,16 +34,16 @@ function ProfileRelationsBox(props) {
         {props.title} <a className="boxLink" href="#">({props.items.length})</a>
       </h2>
       <ul>
-        {/* {props.items.slice(0, 6).map((currentItem) => {
+        {props.items.slice(0, 6).map((currentItem) => {
           return (
             <li key={currentItem.id}>
-              <a href={`/communities/${currentItem.title}`}>
-                <img src={currentItem.image} />
-                <span>{currentItem.title}</span>
+              <a href={`${currentItem.html_url}`}>
+                <img src={currentItem.avatar_url} />
+                <span>{currentItem.login}</span>
               </a>
             </li>
           )
-        })} */}
+        })}
       </ul>
       <hr />
       <a className="boxLink" href="#">Ver Todos</a>
