@@ -1,12 +1,16 @@
 import React from "react";
+import nookies from "nookies"
+import jwt from "jsonwebtoken"
 import { Box } from "../src/components/Box";
 import { MainGrid } from "../src/components/MainGrid";
 import { ProfileRelationsBoxWrapper } from "../src/components/ProfileRelations";
 import { AlurakutMenu, OrkutNostalgicIconSet } from "../src/lib/AlurakutCommons";
 import { ProfileSideBar, ProfileRelationsBox } from "../src/lib/AlurakutPageUtils";
 
-export default function Home() {
-  const githubRandomUser = "ledragox";
+function HomePage(props) {
+  const githubRandomUser = props.githubUser;
+  const [githubRealName, setGithubRealName] = React.useState([]);
+
   const [communities, setCommunities] = React.useState([
     // {
     //   id: '47852436578436782346784754678',
@@ -32,15 +36,29 @@ export default function Home() {
   const [gitFollowers, setGitFollowers] = React.useState([])
   // Array de seguidores no GitHub para um Box https://api.github.com/users/ledragox/followers
   React.useEffect(function () {
-    // GitHub API (GET)
+    // GitHub API followers (GET)
     fetch(`https://api.github.com/users/${githubRandomUser}/followers`)
       .then(function getResponse(response) {
         if (response.ok) {
           return response.json()
         }
+        throw new Error(`Getting github ${githubRandomUser} followers failed`, response.status)
+
       })
       .then(function printResponse(response) {
         setGitFollowers(response)
+      })
+      .catch(function printError(rError) {
+        console.error(rError)
+      })
+
+    // GitHub API users (GET)
+    fetch(`https://api.github.com/users/${githubRandomUser}`)
+      .then(async (response) => {
+        const responseData = await response.json()
+        // console.log("Real name:", responseData.name)
+        const githubRealName = responseData.name
+        setGithubRealName(githubRealName)
       })
 
     // GraphQL API (POST)
@@ -68,7 +86,7 @@ export default function Home() {
         const communitiesDato = responseComplete.data.allCommunities
         setCommunities(communitiesDato)
 
-        console.log("Communities:\n", communitiesDato)
+        // console.log("Communities:\n", communitiesDato)
       })
 
   }, [])
@@ -86,7 +104,7 @@ export default function Home() {
 
           <Box>
             <h1 className="title">
-              Bem vindo(a), {githubRandomUser[0].toUpperCase() + githubRandomUser.substr(1)}
+              Bem vindo(a), {githubRealName}
             </h1>
             <OrkutNostalgicIconSet confiavel={qualities[0]} legal={qualities[1]} sexy={qualities[2]} />
           </Box>
@@ -96,7 +114,7 @@ export default function Home() {
             <form onSubmit={function handleCreateCommunity(e) {
               e.preventDefault();
               const formData = new FormData(e.target)
-              const randomNum = Math.floor(Math.random() * 1029)
+              const randomNum = Math.floor(Math.random() * 1029) // Generate random image ID
               if (!(formData.get('image'))) {
                 formData.set('image', `https://picsum.photos/id/${randomNum}/200/300`)
               }
@@ -200,3 +218,41 @@ export default function Home() {
     </div>
   )
 }
+
+async function getServerSideProps(context) {
+  const cookies = nookies.get(context)
+  const USER_TOKEN = cookies.USER_TOKEN
+  // console.log('User Token', USER_TOKEN)
+
+  const { isAuthenticated } = await fetch('https://alurakut.vercel.app/api/auth', {
+    headers: {
+      Authorization: `${USER_TOKEN}`
+    }
+  })
+    .then((response) => {
+      return response.json()
+    })
+  console.log("isAuthenticated: ", isAuthenticated)
+
+  if (!isAuthenticated) { // if (!isAuthenticated) { // API QUEBRADA, SUBSTITUIR PELA LINHA COMENTADA DEPOIS DE VOLTAR AO NORMAL
+    console.log('Invalid user!', jwt.decode(USER_TOKEN).githubUser)
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    }
+  }
+
+  const { githubUser } = jwt.decode(USER_TOKEN)
+  // console.log('Decrypted User Token:\n', jwt.decode(USER_TOKEN))
+
+  return {
+    props: {
+      githubUser
+    }, // Will be passed to the page component as props
+  }
+}
+
+export { getServerSideProps }
+export default HomePage

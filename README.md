@@ -10,9 +10,11 @@
 - React;
 - NextJS;
 - Styled-Components;
+- Vercel (Deploy);
 - DatoCMS (Site com Gerenciador de Conteúdo);
 - Ajax (Tá mais pra Ajaj);
-- Vercel (Deploy);
+- Nookies (NextJS Cookies);
+- JWT (Json Web Token);
 ## Usage
 
 Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
@@ -24,7 +26,8 @@ npx create-next-app --example with-styled-components with-styled-components-app
 # Dependencies
 yarn add -D babel-plugin-styled-components
 yarn add datocms-client
-
+yarn add nookies
+yarn add jsonwebtoken
 # Initialize project
 yarn dev
 ```
