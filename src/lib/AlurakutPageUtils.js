@@ -34,7 +34,7 @@ function ProfileRelationsBox(props) {
         {props.title} <a className="boxLink" href="#">({props.items.length})</a>
       </h2>
       <ul>
-        {/* {props.items.map((currentItem) => {
+        {/* {props.items.slice(0, 6).map((currentItem) => {
           return (
             <li key={currentItem.id}>
               <a href={`/communities/${currentItem.title}`}>

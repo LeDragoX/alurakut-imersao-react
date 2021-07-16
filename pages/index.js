@@ -21,12 +21,12 @@ export default function Home() {
     'Diolinux',
     'danileao',
     'maykbrito',
-    //'juunegreiros',
-    //'omariosouto',
-    //'peas',
-    //'rafaballerini',
-    //'marcobrunodev',
-    //'felipefialho',
+    'juunegreiros',
+    'omariosouto',
+    'peas',
+    'rafaballerini',
+    'marcobrunodev',
+    'felipefialho',
   ];
   const qualities = [3, 2, 1,]
   const [gitFollowers, setGitFollowers] = React.useState([])
@@ -160,7 +160,7 @@ export default function Home() {
               Minhas comunidades <a className="boxLink" href="#">({communities.length})</a>
             </h2>
             <ul>
-              {communities.map((currentItem) => {
+              {communities.slice(0, 6).map((currentItem) => {
                 return (
                   <li key={currentItem.id}>
                     <a href={`/communities/${currentItem.id}`}>
@@ -180,7 +180,7 @@ export default function Home() {
               Seguindo <a className="boxLink" href="#">({favPersons.length})</a>
             </h2>
             <ul>
-              {favPersons.map((currentItem) => {
+              {favPersons.slice(0, 6).map((currentItem) => {
                 return (
                   <li key={currentItem}>
                     <a href={`/users/${currentItem}`}>
