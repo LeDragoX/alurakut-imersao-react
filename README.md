@@ -1,10 +1,13 @@
-# Orkut da Alura
+# Imersão React - Alurakut
+
 ## Resume
+
 3ª Imersão React - Projeto da Alura que volta no passado, nos ensinando a recriar o Orkut, mas com o nome de Alurakut.
 
-- Link (Deploy na Vercel): https://alurakut-inky-two.vercel.app/ (Se o projeto continuou no ar)
+- Link (Deploy na Vercel): https://alurakut-git-main-ledragox.vercel.app/login (Se o projeto continuou no ar)
 
 ## Tecnologias utilizadas
+
 - NodeJS;
 - Yarn;
 - React;
@@ -15,6 +18,7 @@
 - Ajax (Tá mais pra Ajaj);
 - Nookies (NextJS Cookies);
 - JWT (Json Web Token);
+
 ## Usage
 
 Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
@@ -31,6 +35,7 @@ yarn add jsonwebtoken
 # Initialize project
 yarn dev
 ```
+
 Access [localhost:3000/](localhost:3000/) to see the result.
 
 ## Auto-generated part
@@ -52,14 +57,14 @@ When wrapping a [Link](https://nextjs.org/docs/api-reference/next/link) from `ne
 **components/StyledLink.js**
 
 ```javascript
-import Link from 'next/link'
-import styled from 'styled-components'
+import Link from "next/link";
+import styled from "styled-components";
 
 const StyledLink = ({ as, children, className, href }) => (
   <Link href={href} as={as} passHref>
     <a className={className}>{children}</a>
   </Link>
-)
+);
 
 export default styled(StyledLink)`
   color: #0075e0;
@@ -75,19 +80,19 @@ export default styled(StyledLink)`
     outline: none;
     border: 0;
   }
-`
+`;
 ```
 
 **pages/index.js**
 
 ```javascript
-import StyledLink from '../components/StyledLink'
+import StyledLink from "../components/StyledLink";
 
 export default () => (
   <StyledLink href="/post/[pid]" forwardedAs="/post/abc">
     First post
   </StyledLink>
-)
+);
 ```
 
 </details>
